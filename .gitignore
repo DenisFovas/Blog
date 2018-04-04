@@ -45,7 +45,6 @@ testem.log
 *.sig
 
 pkg/
-src/
 
 ### Linux ###
 *~
