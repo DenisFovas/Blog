@@ -1,0 +1,16 @@
+{
+  "name": "personalblog-2.0",
+  "version": "1.0.0",
+  "description": "Personal blog project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js"
+  },
+  "author": "Denis Fovas",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}

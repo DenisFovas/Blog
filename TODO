@@ -1,0 +1,32 @@
+Server Side:
+  Most of them will be done after we make a database connection, to can have something to can check
+  ☐ Make routing for the admin
+    ☐ Create admin class
+      ☐ Creation
+      ☐ Update values
+      ☐ Make him to add/remove/update articles
+  ☐ Make routing for the articles
+    ☐ Get all
+    ☐ Add one
+    ☐ Remove one
+    ☐ Update one
+    ☐ Allow only one user to edit the article (the author)
+  ☐ Make database connection
+    Maybe use postgre sql? Or maria db?
+    From the Github repo, maybe I shall stay with Postgre SQL, because it's node js 
+    package it's more often updated.
+    some links are [here](https://stackoverflow.com/questions/9205496/how-to-make-connection-to-postgres-via-node-js)
+    and [here](https://github.com/brianc/node-postgres) and [here](http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/)
+    ☐ Make class which handles the database connection
+      ☐ Make tables if not existing
+      ☐ Make insertion function
+      ☐ Make delete function
+      ☐ Make filter to get by a title
+        This can also be done in the router part
+      ☐ Make persitence maybe?
+
+Client Side:
+  ☐ Make UI
+    Use Angular or Vue? Need to make a decision
+    ☐ Make UI for the admin
+    ☐ Make UI for the client
