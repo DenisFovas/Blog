@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
 
 // TODO: Make 404 page
 // TODO: Make 500 page
-
 app.listen(PORT || 3000, () => {
     console.log('Server started on ' + PORT || 3000)
 })
