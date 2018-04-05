@@ -5,13 +5,16 @@ let path = require('path');
 const PORT = 3000
 // Define the app
 let app = express()
+let DbConnection = require('./db/connection')
 
 const ADMIN = require('./routes/admin')
 const ARTICLES = require('./routes/articles')
+// let dbConn = new DbConnection('postgres', 'postgres', 'localhost', '5432', 'Blog')
+
+// dbConn.executeQuery('select * FROM Users')
 
 /* Midlleware declaration */
 app.use(bodyParser.json())
-
 
 // Make use of the public folder
 app.use(express.static(path.join(__dirname, './public')))

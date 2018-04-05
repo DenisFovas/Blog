@@ -11,7 +11,7 @@ Server Side:
     ☐ Remove one
     ☐ Update one
     ☐ Allow only one user to edit the article (the author)
-  ☐ Make database connection
+  ☐ Make database connection @started(18-04-05 08:44)
     Maybe use postgre sql? Or maria db?
     From the Github repo, maybe I shall stay with Postgre SQL, because it's node js 
     package it's more often updated.
