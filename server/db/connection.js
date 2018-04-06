@@ -61,3 +61,24 @@ exports.createTables = () => {
     })
     this._database.close()
 }
+
+exports.insertUser = (username, password, email) => {
+    this._database = new sqlite.Database(this._filename, (err, success) => {
+        if (err) {
+            console.error("Invalid path file:\n\t " + err)
+        }
+    })
+    this._database.serialize(() => {
+        const InsertUser = String.format("INSERT INTO Users('username', 'password', 'email') " + 
+            "VALUES ('{0}', '{1}', '{2}');", username, password, email);
+        console.log(InsertUser)
+        this._database.run(InsertUser, (err, result) => {
+            if (err) {
+                console.error("Can't insert the values into User table" + err)
+                throw new Error('Can\'t insert values into User table')
+            }
+        })
+
+    })
+    this._database.close()
+}

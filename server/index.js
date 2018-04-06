@@ -12,6 +12,7 @@ const PORT = 3000
 // Define the app
 let dbConn = DBConnection.create(path.join(__dirname, '../data/db'))
 dbConn.createTables()
+// dbConn.insertUser('b', 'a', 'fndjaskdfhsak')
 
 let app = express()
 /* Midlleware declaration */
@@ -35,5 +36,4 @@ app.get('/', (req, res) => {
 // TODO: Make 500 page
 app.listen(PORT || 3000, () => {
     console.log('Server started on ' + PORT || 3000)
-    console.log(dbConn)
 })
