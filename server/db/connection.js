@@ -82,3 +82,67 @@ exports.insertUser = (username, password, email) => {
     })
     this._database.close()
 }
+
+exports.insertAdmin = (user_id) => {
+   this._database = new sqlite.Database(this._filename, (err, success) => {
+        if (err) {
+            console.error("Invalid path file:\n\t " + err)
+        }
+    })
+    this._database.serialize(() => {
+        const InsertUser = String.format("INSERT INTO Admnins('user_id') " + 
+            "VALUES ('{0}');", user_id);
+        console.log(InsertUser)
+        this._database.run(InsertUser, (err, result) => {
+            if (err) {
+                console.error("Can't insert the values into Admin table" + err)
+                throw new Error('Can\'t insert values into Admin table')
+            }
+        })
+
+    })
+    this._database.close()
+}
+
+exports.insertArticle = (admin_id, last_update, title, content) => {
+   this._database = new sqlite.Database(this._filename, (err, success) => {
+        if (err) {
+            console.error("Invalid path file:\n\t " + err)
+        }
+    })
+    this._database.serialize(() => {
+        const InsertUser = String.format("INSERT INTO Articles('admin_id', 'last_update', 'title', 'content') " + 
+            "VALUES ('{0}', {1}, {2}, {3});", admin_id, new Date(), title, content);
+        console.log(InsertUser)
+        this._database.run(InsertUser, (err, result) => {
+            if (err) {
+                console.error("Can't insert the values into Articles table" + err)
+                throw new Error('Can\'t insert values into Articles table')
+            }
+        })
+
+    })
+    this._database.close()
+}
+
+exports.insertComment = (article_id, user_id, content) => {
+   this._database = new sqlite.Database(this._filename, (err, success) => {
+        if (err) {
+            console.error("Invalid path file:\n\t " + err)
+        }
+    })
+    this._database.serialize(() => {
+        const InsertUser = String.format("INSERT INTO Comments('article_id', 'user_id', 'content') " + 
+            "VALUES ('{0}', {1}, {2});", article_id, admin_id, content);
+        console.log(InsertUser)
+        this._database.run(InsertUser, (err, result) => {
+            if (err) {
+                console.error("Can't insert the values into Comments table" + err)
+                throw new Error('Can\'t insert values into Comments table')
+            }
+        })
+
+    })
+    this._database.close()
+}
+

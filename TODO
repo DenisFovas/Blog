@@ -21,12 +21,21 @@ Server Side:
     ☐ Make class which handles the database connection
       ✔ Make tables if not existing @done(18-04-06 15:54)
       Created a function module which will create the tables if they are not created
-      ☐ Make insertion function @started(18-04-06 19:06)
+      ✔ Make insertion function @started(18-04-06 19:06) @done(18-04-06 19:30) @lasted(24 minutes 11 seconds)
         ✔ User @done(18-04-06 19:06)
+        ✔ Admin @started(18-04-06 19:08) @done(18-04-06 19:30) @lasted(22 minutes 3 seconds)
+        ✔ Article @done(18-04-06 19:30)
+        ✔ Comment @done(18-04-06 19:30)
+      ☐ Make get option
+        ☐ User
         ☐ Admin
         ☐ Article
         ☐ Comment
       ☐ Make delete function
+        ☐ User
+        ☐ Admin
+        ☐ Article
+        ☐ Comment
       ☐ Make filter to get by a title
         This can also be done in the router part
       ☐ Make persistence maybe?
