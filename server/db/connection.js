@@ -1,14 +1,63 @@
-const pg = require('pg')
-const POOL = pg.Pool
-const CLIENT = pg.Client
+const sqlite = require('sqlite3')
 
-let DBConnection = (_dbName, _user, _password, _server, _port, _db) => {
-    this._dbname = _dbName
-    this._user = _user
-    this._password = _password
-    this._server = _server
-    this._port = _port
-    this._db = _db
-    console.log(this);
+String.format = function () {
+    var s = arguments[0];
+    for (var i = 0; i < arguments.length - 1; i++) {
+        var reg = new RegExp("\\{" + i + "\\}", "gm");
+        s = s.replace(reg, arguments[i + 1]);
+    }
+    return s;
 }
-module.exports = DBConnection
+
+/**
+ * Create a database object.
+ * @param {path to a file, representing the sqlite database} filename 
+ */
+exports.create = (filename) => {
+    this._filename = filename
+    this._database = null
+    return this
+}
+
+/** Create the tables for the database*/
+exports.createTables = () => {
+    this._database = new sqlite.Database(this._filename, (err, success) => {
+        if (err) {
+            console.error("Invalid path file" + err)
+        }
+    })
+    this._database.serialize(() => {
+        const createUser = "CREATE TABLE IF NOT EXISTS `Users` (" + 
+                "`user_id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE," + 
+                "`username`	TEXT NOT NULL UNIQUE," +
+                "`password`	TEXT NOT NULL," +
+                "`email`	TEXT NOT NULL" +
+            ");"
+        const createAdmin = "CREATE TABLE IF NOT EXISTS `Admins` (" + 
+                "`admin_id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "`user_id`	INTEGER NOT NULL," + 
+                "FOREIGN KEY(`user_id`) REFERENCES `Users`(`user_id`)" +
+            ");"
+        const createArticle = "CREATE TABLE IF NOT EXISTS `Articles` (" + 
+                "`article_id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," + 
+                "`admin_id`	INTEGER NOT NULL," +
+                "`last_update`	TEXT NOT NULL," +
+                "`title`	TEXT NOT NULL," +
+                "`content`	TEXT NOT NULL," +
+                "FOREIGN KEY(`admin_id`) REFERENCES `Admins`(`admin_id`)" +
+            ");"
+        const createComment = "CREATE TABLE `Comments` (" + 
+                "`comment_id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "`article_id`	INTEGER NOT NULL," +
+                "`user_id`	INTEGER NOT NULL," +
+                "`content`	TEXT NOT NULL," +
+                "FOREIGN KEY(`user_id`) REFERENCES `Users`(`user_id`)," +
+                "FOREIGN KEY(`article_id`) REFERENCES `Articles`(`article_id`)" +
+            ");"
+        this._database.run(createUser) 
+        this._database.run(createAdmin) 
+        this._database.run(createArticle) 
+        this._database.run(createUser) 
+    })
+    this._database.close()
+}

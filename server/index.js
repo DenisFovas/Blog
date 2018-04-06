@@ -2,17 +2,18 @@ let express = require('express')
 let bodyParser = require('body-parser')
 let path = require('path');
 
-const PORT = 3000
-// Define the app
-let app = express()
-let DbConnection = require('./db/connection')
+let DBConnection = require('./db/connection')
 
+// Constant Values
 const ADMIN = require('./routes/admin')
 const ARTICLES = require('./routes/articles')
-// let dbConn = new DbConnection('postgres', 'postgres', 'localhost', '5432', 'Blog')
+const PORT = 3000
 
-// dbConn.executeQuery('select * FROM Users')
+// Define the app
+let dbConn = DBConnection.create(path.join(__dirname, '../data/db'))
+dbConn.createTables()
 
+let app = express()
 /* Midlleware declaration */
 app.use(bodyParser.json())
 
@@ -34,4 +35,5 @@ app.get('/', (req, res) => {
 // TODO: Make 500 page
 app.listen(PORT || 3000, () => {
     console.log('Server started on ' + PORT || 3000)
+    console.log(dbConn)
 })
