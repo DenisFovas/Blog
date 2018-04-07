@@ -1,5 +1,4 @@
 Server Side:
-  Most of them will be done after we make a database connection, to can have something to can check
   ☐ Make routing for the admin
     ☐ Create admin class
       ☐ Creation
@@ -11,20 +10,61 @@ Server Side:
     ☐ Remove one
     ☐ Update one
     ☐ Allow only one user to edit the article (the author)
-  ☐ Make database connection
+  ☐ Make database connection @started(18-04-05 08:44)
     Maybe use postgre sql? Or maria db?
     From the Github repo, maybe I shall stay with Postgre SQL, because it's node js 
     package it's more often updated.
     some links are [here](https://stackoverflow.com/questions/9205496/how-to-make-connection-to-postgres-via-node-js)
     and [here](https://github.com/brianc/node-postgres) and [here](http://mherman.org/blog/2015/02/12/postgresql-and-nodejs/)
+    Now I will use sqlite3, more exemples online and better support from the community
     ☐ Make class which handles the database connection
-      ☐ Make tables if not existing
-      ☐ Make insertion function
-      ☐ Make delete function
+      ✔ Make tables if not existing @done(18-04-06 15:54)
+      Created a function module which will create the tables if they are not created
+      ✔ Make insertion function @started(18-04-06 19:06) @done(18-04-06 19:30) @lasted(24 minutes 11 seconds)
+        ✔ User @done(18-04-06 19:06)
+        ✔ Admin @started(18-04-06 19:08) @done(18-04-06 19:30) @lasted(22 minutes 3 seconds)
+        ✔ Article @done(18-04-06 19:30)
+        ✔ Comment @done(18-04-06 19:30)
+      ✔ Make get option @done(18-04-07 20:49)
+        ✔ User @done(18-04-07 20:49)
+        ✔ Admin @done(18-04-07 20:49)
+        ✔ Article @done(18-04-07 20:49)
+        ✔ Comment @done(18-04-07 20:49)
+      ✔ Make delete function @done(18-04-07 20:58)
+        ✔ User @done(18-04-07 20:58)
+        ✔ Admin @done(18-04-07 20:58)
+        ✔ Article @done(18-04-07 20:58)
+        ✔ Comment @done(18-04-07 20:58)
+      ☐ Make update function
+        ☐ User
+        ☐ Admin
+        ☐ Article
+        ☐ Comment
       ☐ Make filter to get by a title
         This can also be done in the router part
-      ☐ Make persitence maybe?
-
+      ☐ Make persistence maybe?
+    ☐ Make Unit tests
+      ☐ Database Connection
+        ☐ Get data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Insert data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Create tables
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Delete data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
 Client Side:
   ☐ Make UI
     Use Angular or Vue? Need to make a decision
