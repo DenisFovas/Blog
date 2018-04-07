@@ -137,7 +137,6 @@ exports.insertComment = (article_id, user_id, content) => {
         console.log(InsertUser)
         this._database.run(InsertUser, (err, result) => {
             if (err) {
-                console.error("Can't insert the values into Comments table" + err)
                 throw new Error('Can\'t insert values into Comments table')
             }
         })
@@ -146,3 +145,52 @@ exports.insertComment = (article_id, user_id, content) => {
     this._database.close()
 }
 
+exports.getEntitys = (ENTITY, key) => {
+    let query = "SELECT * FROM '{0}' WHERE '{1}' = '{2}';"
+    if (ENTITY === 'Admin') {
+        query = String.format(query, 'Admins', 'admin_id', key)
+    } else if (ENTITY === 'Comment') {
+        query = String.format(query, 'Comments', 'comment_id', key)
+    } else if (ENTITY === 'User') {
+        query = String.format(query, 'Users', 'username', key)
+    } else if (ENTITY === 'Article') {
+        query = String.format(query, 'Articles', 'article_id', key)
+    } else {
+        throw new Error("Invalid Entity request")
+    }
+    this._database.serialize(() => {
+        this._database.get(query, (err, result) => {
+            if (err) {
+                throw new Error('Can\'t get values from table\n' + err)
+            }
+            this._database.close()
+            return result
+        })
+    })
+    this._database.close()
+}
+
+exports.removeEntity = (ENTITY, key) => {
+    let query = "DELETE FROM '{0}' WHERE '{1}' = '{2}';"
+    if (ENTITY === 'Admin') {
+        query = String.format(query, 'Admins', 'admin_id', key)
+    } else if (ENTITY === 'Comment') {
+        query = String.format(query, 'Comments', 'comment_id', key)
+    } else if (ENTITY === 'User') {
+        query = String.format(query, 'Users', 'username', key)
+    } else if (ENTITY === 'Article') {
+        query = String.format(query, 'Articles', 'article_id', key)
+    } else {
+        throw new Error("Invalid Entity request")
+    }
+    this._database.serialize(() => {
+        this._database.get(query, (err, result) => {
+            if (err) {
+                throw new Error('Can\'t delete values from table \n' + err)
+            }
+            this._database.close()
+            return result
+        })
+    })
+    this._database.close()
+}

@@ -1,5 +1,4 @@
 Server Side:
-  Most of them will be done after we make a database connection, to can have something to can check
   ☐ Make routing for the admin
     ☐ Create admin class
       ☐ Creation
@@ -26,12 +25,17 @@ Server Side:
         ✔ Admin @started(18-04-06 19:08) @done(18-04-06 19:30) @lasted(22 minutes 3 seconds)
         ✔ Article @done(18-04-06 19:30)
         ✔ Comment @done(18-04-06 19:30)
-      ☐ Make get option
-        ☐ User
-        ☐ Admin
-        ☐ Article
-        ☐ Comment
-      ☐ Make delete function
+      ✔ Make get option @done(18-04-07 20:49)
+        ✔ User @done(18-04-07 20:49)
+        ✔ Admin @done(18-04-07 20:49)
+        ✔ Article @done(18-04-07 20:49)
+        ✔ Comment @done(18-04-07 20:49)
+      ✔ Make delete function @done(18-04-07 20:58)
+        ✔ User @done(18-04-07 20:58)
+        ✔ Admin @done(18-04-07 20:58)
+        ✔ Article @done(18-04-07 20:58)
+        ✔ Comment @done(18-04-07 20:58)
+      ☐ Make update function
         ☐ User
         ☐ Admin
         ☐ Article
@@ -39,7 +43,28 @@ Server Side:
       ☐ Make filter to get by a title
         This can also be done in the router part
       ☐ Make persistence maybe?
-
+    ☐ Make Unit tests
+      ☐ Database Connection
+        ☐ Get data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Insert data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Create tables
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
+        ☐ Delete data
+          ☐ Admin
+          ☐ User
+          ☐ Comment
+          ☐ Article
 Client Side:
   ☐ Make UI
     Use Angular or Vue? Need to make a decision
