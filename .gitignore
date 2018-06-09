@@ -6,8 +6,6 @@
 # compiled output
 /dist
 /tmp
-/app/**/*.js
-/app/**/*.js.map
 
 # dependencies
 /node_modules
@@ -104,6 +102,8 @@ typings/
 
 # Optional npm cache directory
 .npm
+
+*.pdf
 
 # Optional eslint cache
 .eslintcache
